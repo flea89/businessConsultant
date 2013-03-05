@@ -1,5 +1,5 @@
 {
-  "name": "publicApp",
+  "name": "public",
   "version": "0.0.0",
   "appPath": "app/public",
   "testPath": "test/client/spec",
