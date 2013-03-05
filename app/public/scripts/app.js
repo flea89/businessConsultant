@@ -7,6 +7,10 @@ angular.module('publicApp', [])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/addCustomer', {
+        templateUrl: 'views/addCustomer.html',
+        controller: 'AddCustomerCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

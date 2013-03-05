@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('puppaApp')
+angular.module('publicApp')
   .filter('upperCase', function () {
     return function (input) {
       return 'upperCase filter: ' + input;
