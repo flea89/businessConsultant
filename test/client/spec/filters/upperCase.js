@@ -3,7 +3,7 @@
 describe('Filter: upperCase', function () {
 
   // load the filter's module
-  beforeEach(module('puppaApp'));
+  beforeEach(module('publicApp'));
 
   // initialize a new instance of the filter before each test
   var upperCase;
