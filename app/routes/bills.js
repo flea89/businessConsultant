@@ -1,41 +1,47 @@
  'use strict';
-var bill = require ('../models/billModel.js');
-
+var bills = require('../models/model.js')('bills');
 
 
 var item = {
 	get : function(req,res){
-		bill.connect();
-		bill.getItem(req.params.item, function (result){
+			bills.connect();
+			bills.getItem(req.params.item, function (result){
+				res.json(result);
+		});
+	},
+	put : function(req,res){
+		bills.connect();
+		bills.updateItem(req.params.item, req.body.bill,function(result){
 			res.json(result);
 		});
 	},
-	post : function(req,res){
-		res.send('postitem');
-	},
-	put : function(req,res){
-		res.send('putitem');
-	},
 	delete : function(req,res){
-		res.send('deletitem');
-	}
+			bills.connect();
+			bills.removeItem(req.params.item,function(result){
+				res.json(result);
+			});
+		}
 };
 
 var collection = {
 	get : function(req,res){
-			bill.connect();
-			bill.getCollection(function (result){
-				res.json(result);
-			});
-		},
-	post : function(req,res){
-		res.send('postcol');
+		bills.connect();
+		bills.getCollection(req.query['bill'] ,function(result){
+			res.json(result);
+		});
 	},
-	put : function(req,res){
-		res.send('putcol');
+	post : function(req,res){
+		bills.connect();
+		console.log(req.body['bill']);
+		bills.create(req.body['bill'],function(result){
+			res.json(result);
+		});
 	},
 	delete : function(req,res){
-		res.send('deletecol');
+		bills.connect();
+		bills.removeCollection(function(result){
+			res.json(result);
+		});
 	}
 };
 
