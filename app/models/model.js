@@ -70,7 +70,9 @@ var create = function (JSONobj , func) {
 						data = JSON.parse(data)
 					}
 					catch(e){
+						func({result: 'malformedJSON'});
 						console.log(e);
+						return;
 					}
 				} else {
 					func({result: 'emptyObj'});
@@ -116,7 +118,8 @@ var create = function (JSONobj , func) {
 				if (JSONobj){
 					data+=JSONobj;
 					try{
-						data = JSON.parse(data)
+						data = JSON.parse(data);
+						delete data._id;
 					}
 					catch(e){
 						console.log(e);
@@ -127,8 +130,10 @@ var create = function (JSONobj , func) {
 				}
 				collection.update({_id: oId}, {$set: data}, {safe:true}, function(err){
 					 err === null ? func({result: 'ok'}) : func({result: 'no'});
+					 if(err!==null){
+						console.log(err);
+					 }
 				});
-
 			});
 		});
 	};

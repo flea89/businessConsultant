@@ -26,6 +26,7 @@ var item = {
 var collection = {
 	get : function(req,res){
 		users.connect();
+		console.log(req.query['user']);
 		users.getCollection(req.query['user'] ,function(result){
 			res.json(result);
 		});

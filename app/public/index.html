@@ -1,49 +1,109 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="styles/main.css">
-  </head>
-  <body ng-app="publicApp">
-    <!--[if lt IE 7]>
-      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7">
+  <![endif]-->
+  <!--[if IE 7]>
+  <html class="no-js lt-ie9 lt-ie8">
     <![endif]-->
+    <!--[if IE 8]>
+    <html class="no-js lt-ie9">
+      <![endif]-->
+      <!--[if gt IE 8]>
+      <!-->
+      <html class="no-js">
+        <!--<![endif]-->
+<head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/main.css"></head>
+<body ng-app="publicApp">
+        <!--[if lt IE 7]>
+        <p class="chromeframe">
+          You are using an outdated browser.
+          <a href="http://browsehappy.com/">Upgrade your browser today</a>
+          or
+          <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
+          to better experience this site.
+        </p>
+        <![endif]-->
 
-    <!--[if lt IE 9]>
-      <script src="components/es5-shim/es5-shim.js"></script>
-      <script src="components/json3/lib/json3.min.js"></script>
-    <![endif]-->
+        <!--[if lt IE 9]>
+        <script src="components/es5-shim/es5-shim.js"></script>
+        <script src="components/json3/lib/json3.min.js"></script>
+        <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="container" ng-view></div>
+        <!-- Add your site or application content here -->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
 
-    <script src="components/angular/angular.js"></script>
-    <script src="components/angular-resource/angular-resource.js"></script>
-    <script src="components/angular-cookies/angular-cookies.js"></script>
-    <script src="components/angular-sanitize/angular-sanitize.js"></script>
-asdasdasd
-    <!-- build:js scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/filters/upperCase.js"></script>
-    <script src="scripts/controllers/addCustomer.js"></script>
-    <script src="scripts/directives/navBar.js"></script>
-    <!-- endbuild -->
+              <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </a>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
+              <!-- Be sure to leave the brand out there if you want it shown -->
+              <a class="brand" href="#">Project name</a>
+              <!-- Everything you want hidden at 940px or less, place within here -->
+              <div class="nav-collapse collapse">
+                <!-- .nav, .navbar-search, .navbar-form, etc -->
+                <ul class="nav">
+                  <li class="active">
+                    <a href="#">Home</a>
+                  </li>
+                  <li>
+                    <a href="#/addCustomer">New Customer</a>
+                  </li>
+                  <li>
+                    <a href="#">Link</a>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <progressbar show="pBarVisibility" status="pBarStatus" active="pBarActive"></progressbar>
+        <div class="container" ng-view></div>
+
+        <script src="components/jquery/jquery.min.js"></script>
+        <script src="components/angular/angular.js"></script>
+        <script src="components/angular-resource/angular-resource.js"></script>
+        <script src="components/angular-cookies/angular-cookies.js"></script>
+        <script src="components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="components/bootstrap/js/bootstrap-collapse.js"></script>
+        <script type="text/javascript" src="components/jspdf/jspdf.js"></script>
+        <script type="text/javascript" src="components/jspdf/jspdf.plugin.standard_fonts_metrics.js"></script>
+
+        <script type="text/javascript" src="components/jspdf/jspdf.plugin.from_html.js"></script>
+
+        <!-- build:js scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/services/customer.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/filters/upperCase.js"></script>
+        <script src="scripts/controllers/addCustomer.js"></script>
+        <script src="scripts/directives/navBar.js"></script>
+        <script src="scripts/controllers/customerList.js"></script>
+        <script src="scripts/controllers/modifyCustomer.js"></script>
+ 
+        <script src="scripts/services/barbero.js"></script>
+        <script src="scripts/directives/progressBar.js"></script>
+        <!-- endbuild -->
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
       var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
-  </body>
-</html>
+</body>
+      </html>

@@ -1,2 +1,21 @@
 @import "compass_twitter_bootstrap";
 @import "compass_twitter_bootstrap_responsive";
+.form-divider{
+	width: 300px;
+}
+
+.fixedprogress{
+	position: absolute;
+	width: 100%;
+	top:42px;
+	height: 8px;
+}
+.hidden{
+	display: none;
+}
+
+.customerTable{
+	tr{
+		height: 70px;
+	}
+}

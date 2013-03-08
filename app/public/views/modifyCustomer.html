@@ -1,8 +1,10 @@
-<form name="addCustomerForm" id="culo">
+<h2>{{success}}</h2>
+
+<form name="addCustomerForm">
 	<fieldset>
 		<legend><h3>Aggiungi Cliente</h3></legend>
 		<select ng-model="user.type" class="ng-pristine ng-valid">
-  			<option value="private" >Private</option>
+  			<option value="private" selected>Private</option>
  			<option value="professional">Professional</option>
 		</select>
 		<div class="row-fluid">
@@ -50,12 +52,10 @@
 <br>
 		<div class="row-fluid">
 			<span class="span7">
-				<button ng-click="addCustomer()" class="btn btn-large btn-block btn-primary">Submit</button>
+				<button ng-click="modifyCustomer()" class="btn btn-large btn-block btn-primary">Modify</button>
 			</span>
 		</div>
 	</fieldset>
 </form>
-
-
 <p>{{user}}</p>
 <h1>{{success}}</h1>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('publicAppApp')
+angular.module('publicApp')
   .directive('navBar', function () {
     return {
       template: '<div></div>',
