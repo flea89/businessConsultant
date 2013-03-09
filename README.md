@@ -5,6 +5,6 @@ of exploring the potentials of these two "libraries" and make it work together.<
 The work started by trying to "build" a seed, in order have a good directive structure and in particular to have grunt, bower and 
 tests to work properly.
 
-* Backend ---> ExpressJs, restfull APIS that offers CRUD functionalities on the exposed resources ( itemes or collections )and  MongoDB server
+* Backend ---> ExpressJs, restfull APIS that offers CRUD functionalities on the exposed resources ( items or collections )and  MongoDB server
         
 * FrontEnd ---> AngularJs
