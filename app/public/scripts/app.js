@@ -19,6 +19,10 @@ angular.module('publicApp',['ngResource'])
         templateUrl: 'views/modifyCustomer.html',
         controller: 'ModifyCustomerCtrl'
       })
+      .when('/createBill', {
+        templateUrl: 'views/createBill.html',
+        controller: 'CreateBillCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

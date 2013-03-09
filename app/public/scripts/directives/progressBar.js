@@ -14,6 +14,7 @@ angular.module('publicApp')
 				'</div>',
 
         link: function postLink(scope, element, attrs) {
+            scope.show = 'hidden';
         }
     };
   });
