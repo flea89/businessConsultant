@@ -1,18 +1,22 @@
-// 'use strict';
+'use strict';
 
-// describe('Service: customer', function () {
+describe('Service: customer', function () {
 
-//   // load the service's module
-//   beforeEach(module('publicApp'));
+    // load the service's module
+    beforeEach(module('publicApp'));
 
-//   // instantiate service
-//   var customer;
-//   beforeEach(inject(function (_customer_) {
-//     customer = _customer_;
-//   }));
+    // instantiate service
+    var customer;
+    beforeEach(inject(function (Customer) {
+        customer = Customer;
+    }));
 
-//   it('should do something', function () {
-//     expect(!!customer).toBe(true);
-//   });
+    it('should be a resource object', function () {
+        expect(customer.get).toBeDefined();
+        expect(customer.save).toBeDefined();
+        expect(customer.query).toBeDefined();
+        expect(customer.remove).toBeDefined();
+        expect(customer.update).toBeDefined();
+    });
 
-// });
+});
