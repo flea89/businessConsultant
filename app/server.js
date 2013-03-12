@@ -28,6 +28,7 @@ app.configure('development', function () {
 
 expressmap(app).defineRoutes('/bills', require('./routes/bills'))
   .defineRoutes('/users',require('./routes/users'))
+  .defineRoutes('/admin', require('./routes/admin'))
   .map();
 
 var server = http.createServer(app);

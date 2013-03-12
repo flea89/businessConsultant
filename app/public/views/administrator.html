@@ -1,0 +1,57 @@
+<h2>{{success}}</h2>
+
+<form name="addCustomerForm">
+    <fieldset>
+        <legend><h3>Modifica il tuo utente</h3></legend>
+        <div class="row-fluid">
+            <div class="span8">
+                <div class="span6">
+                    <ul class="nav nav-list">
+                        <h4>Credenziali</h4>
+                        <li class="divider form-divider"></li>
+                        <label>Nome</label>
+                        <input type="text" placeholder="" ng-model="admin.name" name="name" required>
+                        <span class="error" ng-show="addCustomerForm.name.$error.required">Required!</span>
+                        <label>Cognome</label>
+                        <input type="text" placeholder="" name="surname" ng-model="admin.surname" required>
+                        <span class="error" ng-show="addCustomerForm.surname.$error.required">Required!</span>
+                        <label>Codice Fiscale</label>
+                        <input type="text" placeholder="" ng-model="admin.cf" ng-required='!admin.pi'>
+                        <label>Partita Iva</label>
+                        <input type="text" placeholder="" ng-model="admin.pi" ng-required='!admin.cf'>
+                    </ul>
+                </div>
+
+                <div class="span6">
+                    <ul class="nav nav-list">
+
+                        <h4>Contatti</h4>
+                        <li class="divider form-divider"></li>
+                        <label>Indirizzo Email</label>
+                        <input type="email" placeholder="" ng-model="admin.mail" >
+                        <label>Telefono</label>
+                        <input type="telephone" placeholder="" ng-model="admin.telephone" >
+                        <label>Città</label>
+                        <input type="text" placeholder="" ng-model="admin.address.city">
+                        <label>Provincia</label>
+                        <input type="text" placeholder="" ng-model="admin.address.provincia">
+                        <label>Cap</label>
+                        <input type="text" placeholder="" ng-model="admin.address.cap">
+                        <label>Via</label>
+                        <input type="text" placeholder="" ng-model="admin.address.street">
+                        <label>Numero Civico</label>
+                        <input type="text" placeholder="" ng-model="admin.address.streetnumber">
+                    </ul>
+                </div>
+            </div>
+        </div>
+<br>
+        <div class="row-fluid">
+            <span class="span7">
+                <button ng-click="modifyCustomer()" class="btn btn-large btn-block btn-primary">Modify</button>
+            </span>
+        </div>
+    </fieldset>
+</form>
+<p>{{user}}</p>
+<h1>{{success}}</h1>

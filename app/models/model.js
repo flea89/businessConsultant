@@ -111,6 +111,7 @@ var create = function (JSONobj , func) {
 
 	var updateItem = function (id, JSONobj, func) {
 		var data ='';
+		console.log(JSONobj);
 		db.open(function(err,db){
 			db.collection(collection, function(err,collection){
 				var oId = new BSON.ObjectID(id);

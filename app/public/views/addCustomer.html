@@ -50,7 +50,7 @@
 <br>
 		<div class="row-fluid">
 			<span class="span7">
-				<button ng-click="addCustomer()" class="btn btn-large btn-block btn-primary">Submit</button>
+				<button ng-click="addCustomer()" ng-disabled="addCustomerForm.$invalid" class="btn btn-large btn-block btn-primary">Submit</button>
 			</span>
 		</div>
 	</fieldset>

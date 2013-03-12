@@ -23,6 +23,10 @@ angular.module('publicApp',['ngResource'])
         templateUrl: 'views/createBill.html',
         controller: 'CreateBillCtrl'
       })
+      .when('/administrator/:id', {
+        templateUrl: 'views/administrator.html',
+        controller: 'AdministratorCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

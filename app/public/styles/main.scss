@@ -16,19 +16,13 @@
 
 .customerTable{
 	tr{
-		height: 70px;
+		height: 50px;
 	}
 }
 
 .box
 {
-    position: relative;
-    float: left;
-    width: 700px;
-    height: auto;
-    padding: 50px;
-    margin: 0 auto;
-    background-color: #fff;
+    background-color: #Fffdf9;
     -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
@@ -38,8 +32,88 @@
 }
 .bollo{
     border: dashed;
-    float: right;
+    border-width: 1px;
+    width: 120px;
+    padding-left: 10px;
 }
 .customerCredential{
-    float: right;
+    margin-top:40px;
+    padding-bottom: 20px;
 }
+.rowt{
+    height: 20px
+}
+.billTable{
+    [contenteditable] { padding: 10px; outline: 1px dashed #CCC; }
+    [contenteditable]:hover { outline: 1px dashed #0090D2; }
+    [contenteditable]:focus { outline: 1px dashed #0090D2; }
+    td:nth-child(1)
+    {
+    width:10px;
+    }
+
+    td:nth-child(3)
+    {
+    width:7px;
+    }
+
+    td:nth-child(4)
+    {
+    width:7px;
+    }
+
+}
+.totale{
+    td{
+         height: 20px;
+    }
+}
+
+.createBillBontainer{
+    .span9{
+        margin-left: 0;
+    padding-left: 17px;
+    }
+}
+
+address{
+    [contenteditable]{
+        border-bottom: 1px dotted #000000
+    }
+}
+.chooseCustomer{
+    padding-left: 10px;
+    border-width: 1px;
+    ul{
+        overflow: hidden;
+        padding-left: 15px;
+    }
+
+    .btn{
+        margin-left: 12px;
+        margin-bottom: 8px;
+    }
+
+    input {
+        width: 150px;
+
+    }
+}
+
+
+.span3.chooseCustomer{
+    margin-left: 0px;
+}
+
+.billSaveControls{
+    padding-left: 50px;
+    button{
+        margin-left: 30px;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+}
+
+
+
+

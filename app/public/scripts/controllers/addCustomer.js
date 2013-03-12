@@ -2,7 +2,6 @@
 
 angular.module('publicApp').controller('AddCustomerCtrl', function ($scope,$rootScope,Customer) {
 	$scope.success ;
-	$rootScope.pBarVisibility = 'hidden';
 	$scope.user = {type :'private'};
 	$scope.addCustomer = function () {
 		$rootScope.pBarStatus='progress-info';
