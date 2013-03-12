@@ -1,9 +1,11 @@
 <form name="addCustomerForm" id="culo">
 	<fieldset>
-		<legend><h3>Aggiungi Cliente</h3></legend>
+		<legend>
+			<h3>Aggiungi Cliente</h3>
+		</legend>
 		<select ng-model="user.type" class="ng-pristine ng-valid">
-  			<option value="private" >Private</option>
- 			<option value="professional">Professional</option>
+			<option value="private" >Private</option>
+			<option value="professional">Professional</option>
 		</select>
 		<div class="row-fluid">
 			<div class="span8">
@@ -11,17 +13,42 @@
 					<ul class="nav nav-list">
 						<h4>Credenziali</h4>
 						<li class="divider form-divider"></li>
-						<label>Nome</label>
-						<input type="text" placeholder="" ng-model="user.name" name="name" required>
-						<span class="error" ng-show="addCustomerForm.name.$error.required">Required!</span>
-						<label>Cognome</label>
-						<input type="text" placeholder="" name="surname" ng-model="user.surname" required>
-						<span class="error" ng-show="addCustomerForm.surname.$error.required">Required!</span>
+
+						<label>Titolo:</label>
+						<select ng-model="user.title" class="ng-pristine ng-valid">
+							<option value="" selected></option>
+							<option value="Sig" selected>Signor</option>
+							<option value="Sig.ra">Signora</option>
+							<option value="sig.na" selected>Signorina</option>
+							<option value="Dr">Dottore</option>
+							<option value="Spett.le">Spett.le</option>
+							<option value="Societa">Societa'</option>
+						</select>
+
+
+
+						<div ng-show="isNotSociety()" >
+							<label>Cognome</label>
+							<input type="text" placeholder="" name="surname" ng-model="user.surname" ng-required="isNotSociety()">
+							<span class="error" ng-show="addCustomerForm.surname.$error.required">Required!</span>
+							<label>Nome</label>
+							<input type="text" placeholder="" ng-model="user.name" name="name" ng-required="isNotSociety()">
+							<span class="error" ng-show="addCustomerForm.name.$error.required">Required!</span>
+						</div>
+
+
+
+						<div ng-show="!isNotSociety()" >
+							<label>Societa</label>
+							<input type="text" placeholder="" name="societa" ng-model="user.societa" ng-required="!isNotSociety()">
+							<span class="error" ng-show="addCustomerForm.surname.$error.required">Required!</span>
+						</div>
+
+
 						<label>Codice Fiscale</label>
 						<input type="text" placeholder="" ng-model="user.cf" ng-required='!user.pi'>
 						<label>Partita Iva</label>
-						<input type="text" placeholder="" ng-model="user.pi" ng-required='!user.cf'>
-					</ul>
+						<input type="text" placeholder="" ng-model="user.pi" ng-required='!user.cf'></ul>
 				</div>
 
 				<div class="span6">
@@ -33,21 +60,29 @@
 						<input type="email" placeholder="" ng-model="user.mail" >
 						<label>Telefono</label>
 						<input type="telephone" placeholder="" ng-model="user.telephone" >
+						<label>Indirizzo</label>
+						<select ng-model="user.address.streetType" class="ng-pristine ng-valid">
+							<option value="Via" selected>Via</option>
+							<option value="Pza">Piazza</option>
+							<option value="Corso" selected>Corso</option>
+							<option value="Largo">Largo</option>
+							<option value="Vicolo">Vicolo</option>
+							<option value="Strada">Strada</option>
+							<option value="Localita">Localita'</option>
+						</select>
+						<input type="text" placeholder="" ng-model="user.address.street">
+						<label>Numero Civico</label>
+						<input type="text" placeholder="" ng-model="user.address.streetnumber">
 						<label>Città</label>
 						<input type="text" placeholder="" ng-model="user.address.city">
 						<label>Provincia</label>
 						<input type="text" placeholder="" ng-model="user.address.provincia">
 						<label>Cap</label>
-						<input type="text" placeholder="" ng-model="user.address.cap">
-						<label>Via</label>
-						<input type="text" placeholder="" ng-model="user.address.street">
-						<label>Numero Civico</label>
-						<input type="text" placeholder="" ng-model="user.address.streetnumber">
-					</ul>
+						<input type="text" placeholder="" ng-model="user.address.cap"></ul>
 				</div>
 			</div>
 		</div>
-<br>
+		<br>
 		<div class="row-fluid">
 			<span class="span7">
 				<button ng-click="addCustomer()" ng-disabled="addCustomerForm.$invalid" class="btn btn-large btn-block btn-primary">Submit</button>
@@ -55,7 +90,6 @@
 		</div>
 	</fieldset>
 </form>
-
 
 <p>{{user}}</p>
 <h1>{{success}}</h1>

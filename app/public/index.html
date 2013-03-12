@@ -49,7 +49,7 @@
               </a>
 
               <!-- Be sure to leave the brand out there if you want it shown -->
-              <a class="brand" href="#">Project name</a>
+              <a class="brand" href="#">BusinessConsultant</a>
               <!-- Everything you want hidden at 940px or less, place within here -->
               <div class="nav-collapse collapse">
                 <!-- .nav, .navbar-search, .navbar-form, etc -->
@@ -58,10 +58,13 @@
                     <a href="#">Home</a>
                   </li>
                   <li>
-                    <a href="#/addCustomer">New Customer</a>
+                    <a href="#/createBill">Crea Fattura</a>
                   </li>
                   <li>
-                    <a href="#">Link</a>
+                    <a href="#/addCustomer">Aggiungi cliente</a>
+                  </li>
+                  <li>
+                    <a href="#/customerList">Lista Clienti</a>
                   </li>
                 </ul>
               </div>
@@ -71,7 +74,6 @@
         </div>
         <progressbar show="pBarVisibility" status="pBarStatus" active="pBarActive"></progressbar>
         <div class="container" ng-view></div>
-
         <script src="components/jquery/jquery.min.js"></script>
         <script src="components/angular/angular.js"></script>
         <script src="components/angular-resource/angular-resource.js"></script>
@@ -102,6 +104,7 @@
         <script src="scripts/services/billHandler.js"></script>
         <script src="scripts/services/admin.js"></script>
         <script src="scripts/controllers/administrator.js"></script>
+        <script src="scripts/controllers/customerDetail.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

@@ -18,11 +18,17 @@
 	tr{
 		height: 50px;
 	}
+
+    button{
+        width:130px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
 }
 
 .box
 {
-    background-color: #Fffdf9;
+    background-color: #FFFDFA;
     -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
@@ -92,6 +98,7 @@ address{
     .btn{
         margin-left: 12px;
         margin-bottom: 8px;
+        width: 200px;
     }
 
     input {
@@ -114,6 +121,65 @@ address{
     }
 }
 
+.navbar-inner {
+  background-color: #333333; /* background color will be black for all browsers */
+  background-image: none;
+  background-repeat: no-repeat;
+  filter: none;
+}
+
+.navbar-inner .nav > li > a {
+color: #999999;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.navbar-inner .nav > li > a:hover {
+color: #fff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.navbar-inner .brand {
+  padding-right: 30px;
+  padding-left: 0;
+  margin-left: 20px;
+  float: left;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
+}
+
+body > .navbar .brand:hover {
+  text-decoration: none;
+  color:rgba(200,200,200,.9);
+  text-shadow: 0 1px 0 rgba(255,255,255,.3), 0 0 30px rgba(255,255,255,.4);
+
+}
+
+.navbar .nav > .active > a {
+  color:#dddddd;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+  background-color: rgba(0, 0, 0, .1);
+}
+
+.navbar .nav > .active > a:hover {
+  text-decoration: none;
+  color:white;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+  background-color: rgba(0, 0, 0, .2);
+
+}
+
+
+.navbar .nav > li > a:hover {
+  text-decoration: none;
+  color:white;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+  background-color: rgba(30, 30, 30, .1);
+
+}
 
 
 

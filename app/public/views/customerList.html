@@ -20,40 +20,42 @@
 </span>
 <div class="span8">
 
-<table class="table customerTable">
-	<thead>
-		<th>#</th>
-		<th>Credential</th>
-		<th>Address</th>
-	</thead>
+	<table class="table customerTable">
+		<thead>
+			<th>#</th>
+			<th>Credential</th>
+			<th>Address</th>
+		</thead>
 
-	<tbody>
-		<tr ng-repeat="customer in getCustomers() | orderBy:'surname' |filter:search ">
-			<td width="10%" >{{$index}}</td>
-			<td width="40%"> <strong>{{customer.name}} {{customer.surname}}</strong>
-				<br>
-				<span ng-show="customer.cf" customer.cf>CodFiscale:</span>
-				{{customer.cf}}
-				<br>
-				<span ng-show="customer.pi">PartitaIva:</span>
-				{{customer.pi}}
-			</td>
-			<td width="40%">
-				<address>
-					Via {{customer.address.street}}, {{customer.address.streetnumber}}
-					<br>
-					{{customer.address.city}} {{customer.address.cap}} {{customer.address.provincia}}
-					<br>
-					<span ng-show="customer.address">Italy</span>
-				</address>
-			</td>
-			<td>
-				<button class="btn btn-primary" ng-click="linkModify(customer._id)">Modify</button>
-				<button  class=" btn btn-danger" ng-click="deleteCustomer(customer._id)">Delete</button>
-			</td>
-		</tr>
+		<tbody>
+			<tr ng-repeat="customer in getCustomers() | orderBy: ['surname','name'] |filter:search ">
+				<td width="10%" >{{$index}}</td>
+				<td width="40%"> <strong><a href="#/customerDetail/{{customer._id}}">{{customer.surname}} {{customer.name}} {{customer.societa}}</a></strong> 
+					<p ng-show="customer.cf">
+						<span customer.cf>CodFiscale:</span>
+						{{customer.cf}}
+						<br>
+					</p>
+					<p ng-show="customer.pi">PartitaIva:
+					{{customer.pi}}</p>
+				</td>
+				<td width="40%">
+					<address>
+						Via {{customer.address.street}}, {{customer.address.streetnumber}}
+						<br>
+						{{customer.address.city}} {{customer.address.cap}} {{customer.address.provincia}}
+						<br>
+						<span ng-show="customer.address">Italy</span>
+					</address>
+				</td>
+				<td>
+					<button class="btn btn-primary" ng-click="linkModify(customer._id)">Modify</button>
+					<button  class=" btn btn-danger" ng-click="deleteCustomer(customer._id)">Delete</button>
+				</td>
+			</tr>
 
-	</tbody>
-</table>
+		</tbody>
+	</table>
 </div>
-<p> {{success}}
+<p>
+	{{success}}

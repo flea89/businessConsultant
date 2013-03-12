@@ -1,0 +1,36 @@
+<div class="span3">
+<h2>{{customer.surname}} {{customer.name}}</h2>
+<b>Tipo di cliente:</b> {{customer.type}}
+<h3>Indirizzo</h3>
+<p>
+<address>
+    <div>
+        <span contenteditable>Via</span>
+        <span contenteditable ng-model="customer.address.street"></span>
+        <span contenteditable ng-model="customer.address.streetNumber"></span><br>
+        <span contenteditable ng-model="customer.address.cap"></span>
+        <span contenteditable ng-model="customer.address.city"></span>
+        (
+        <span contenteditable ng-model="customer.address.provincia"></span>
+        )
+    </div>
+    <div>
+        P.iva:
+        <span contenteditable ng-model="customer.pi"></span>
+    </div>
+    <div>
+        C.F.:
+        <span contenteditable ng-model="customer.cf"></span>
+    </div>
+</address>
+</p>
+
+<h3>Contatti</h3>
+<p>
+    <b>Mail:</b> {{customer.mail}}
+</p>
+<p>
+    <b>Phone:</b> {{customer.telephone}}
+</p>
+<button class="btn btn-primary" ng-click="linkModify()">Modify</button>
+</div>

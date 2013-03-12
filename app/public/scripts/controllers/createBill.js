@@ -3,7 +3,8 @@
 angular.module('publicApp').controller('CreateBillCtrl', function ($scope, Admin, Customer, Bill) {
     $scope.bill = {
         customer: {},
-        admin: {}
+        admin: {},
+        type: 'professional'
     };
     $scope.tasks = [{}, {}, {}, {}, {}, {}, {}, {}, {}];
     $scope.limiter = 5;

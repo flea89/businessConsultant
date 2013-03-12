@@ -1,12 +1,17 @@
 <div class="row createBillContainer">
     <div class="span3 chooseCustomer">
+        <p>Tipo fattura</p>
+        <select ng-model="bill.type" class="ng-pristine ng-valid">
+            <option value="private">Private</option>
+            <option value="professional">Professional</option>
+        </select>
         <h3>Scegli cliente</h3>
         <span>
             <input type="text" placeholder="Search" ng-model="search.customer" name="customer"></span>
 
         <ul class="unstyled">
-            <li ng-repeat="customer in customers | filter:search.customer | limitTo: limiter | orderBy:'surname'">
-                <button ng-click="setCustomer(customer._id)" class="btn">{{customer.surname}} {{customer.name}}</button>
+            <li ng-repeat="customer in customers | filter:search.customer | orderBy:['surname','name'] | limitTo: limiter">
+                <button ng-click="setCustomer(customer._id)" class="btn">{{customer.surname}} {{customer.name}} {{customer.societa}}</button>
             </li>
         </ul>
         <button class="btn btn-primary" ng-click="toogleLimit()">+</button>
@@ -56,13 +61,14 @@
                 <div class="span3 offset1 customerCredential">
                     <address>
                         <div>
-                            <span contenteditable>Dr</span>
+                            <span contenteditable ng-model="bill.customer.title">Dr</span>
                             <span contenteditable ng-model="bill.customer.surname">cognome</span>
                             <span contenteditable ng-model="bill.customer.name">nome</span>
+                            <span contenteditable ng-model="bill.customer.societa"></span>
                         </div>
 
                         <div>
-                            <span contenteditable>Via</span>
+                            <span contenteditable ng-model="bill.customer.address.streetType" >Via</span>
                             <span contenteditable ng-model="bill.customer.address.street"></span>
                             <span contenteditable ng-model="bill.customer.address.streetNumber"></span>
                             <span contenteditable ng-model="bill.customer.address.cap"></span>

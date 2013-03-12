@@ -1,8 +1,18 @@
 'use strict';
 
-angular.module('publicApp').controller('AddCustomerCtrl', function ($scope,$rootScope,Customer) {
+angular.module('publicApp').controller('AddCustomerCtrl', function ($scope,$rootScope,Customer,$route) {
 	$scope.success ;
-	$scope.user = {type :'private'};
+	$scope.user = {
+		type :'private',
+		address:{
+            streetType: 'Via'
+        }
+	};
+
+	$scope.isNotSociety = function(){
+		return $scope.user.title !== 'Societa';
+	};
+
 	$scope.addCustomer = function () {
 		$rootScope.pBarStatus='progress-info';
 		$rootScope.pBarActive='active';
@@ -10,10 +20,11 @@ angular.module('publicApp').controller('AddCustomerCtrl', function ($scope,$root
 		$rootScope.pBarVisibility = '';
 		var JSONuser = JSON.stringify($scope.user);
 		$scope.success = Customer.save([], {user: JSONuser},function(a){
-
 			if ( a.result === 'ok'){
 				$rootScope.pBarActive='';
 				$rootScope.pBarStatus='progress-success';
+				$route.reload();
+
 			}
 			else{
 				$rootScope.pBarActive='';
