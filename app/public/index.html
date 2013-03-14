@@ -40,18 +40,18 @@
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
-
               <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
               <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </a>
-
+              <online></online>
               <!-- Be sure to leave the brand out there if you want it shown -->
-              <a class="brand" href="#">BusinessConsultant</a>
+              <a class="brand" href="#">B<span class="hidden-phone">usiness</span>Consultant</a>
               <!-- Everything you want hidden at 940px or less, place within here -->
               <div class="nav-collapse collapse">
+
                 <!-- .nav, .navbar-search, .navbar-form, etc -->
                 <ul class="nav">
                   <li class="active">
@@ -67,6 +67,7 @@
                     <a href="#/customerList">Lista Clienti</a>
                   </li>
                 </ul>
+                <img src="images/evolution.png" class="evolution">
               </div>
 
             </div>
@@ -105,6 +106,7 @@
         <script src="scripts/services/admin.js"></script>
         <script src="scripts/controllers/administrator.js"></script>
         <script src="scripts/controllers/customerDetail.js"></script>
+        <script src="scripts/directives/online.js"></script>
         <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

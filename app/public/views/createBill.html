@@ -20,7 +20,7 @@
     <div class="span9 box">
         <div class="row">
             <div class="span2 offset7 bollo hidden-phone">
-                carta da bollo da euro1.81
+                carta da bollo da euro 1.81
                 <br>
                 apposta sull'originale
                 <br>
@@ -100,8 +100,9 @@
                         <tbody>
                             <tr>
                                 <td>56</td>
-                                <td contenteditable>{{date | date:'dd/MM/yy'}}</td>
-                            </tr>
+                                <td><input ng-model="bill.date" type="date" value ="{{date | date:'yyyy-MM-dd'}}"></td>
+<!--                                 <td contenteditable>{{date | date:'dd/MM/yy'}}</td>
+ -->                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -154,7 +155,7 @@
                         </tr>
                         <tr>
                             <td>Bollo</td>
-                            <td>1,41</td>
+                            <td>1,81</td>
                         </tr>
                         <tr>
                             <td>Totale da corrispondere</td>
@@ -173,4 +174,4 @@
         </div>
     </div>
 </div>
-{{culo}}
+{{bill}}

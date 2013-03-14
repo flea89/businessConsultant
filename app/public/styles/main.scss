@@ -1,5 +1,47 @@
 @import "compass_twitter_bootstrap";
 @import "compass_twitter_bootstrap_responsive";
+
+body {
+    /*base colour*/
+    background-color: #dddddd; 
+    /*these control the width of the stripes*/
+    -webkit-background-size: 8px 8px;
+    -moz-background-size: 8px 8px;
+    background-size: 8px 8px; 
+    background-image: 
+      -webkit-gradient(linear, 0 0, 100% 100%,
+      color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent),
+      color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)),
+      color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent),
+      to(transparent));
+    background-image: 
+      -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+      transparent 75%, transparent);
+    background-image: 
+      -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+      transparent 75%, transparent);
+    background-image: 
+      -ms-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+      transparent 75%, transparent);
+    background-image: 
+      -o-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+      transparent 75%, transparent);
+    background-image: 
+      linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+      transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+      transparent 75%, transparent);  
+}
+
+input[type="text"],input[type="email"],input[type="telephone"] textarea {
+
+  background-color : #fffefe; 
+
+}
+
 .form-divider{
 	width: 300px;
 }
@@ -122,7 +164,7 @@ address{
 }
 
 .navbar-inner {
-  background-color: #333333; /* background color will be black for all browsers */
+  background-color: #212121; /* background color will be black for all browsers */
   background-image: none;
   background-repeat: no-repeat;
   filter: none;
@@ -153,9 +195,9 @@ text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 
 body > .navbar .brand:hover {
   text-decoration: none;
-  color:rgba(200,200,200,.9);
-  text-shadow: 0 1px 0 rgba(255,255,255,.3), 0 0 30px rgba(255,255,255,.4);
-
+  color:rgba(255,255,255,.9);
+/*  text-shadow: 0 1px 0 rgba(255,255,255,.3);
+*/
 }
 
 .navbar .nav > .active > a {
@@ -181,5 +223,19 @@ body > .navbar .brand:hover {
 
 }
 
+.circle {
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px; 
+}
 
+.navbar .online:hover{
+  cursor: default;
+}
 
+.evolution{
+  float: right;
+  height: 40px;
+}

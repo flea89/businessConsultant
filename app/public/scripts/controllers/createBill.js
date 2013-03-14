@@ -31,13 +31,25 @@ angular.module('publicApp').controller('CreateBillCtrl', function ($scope, Admin
 
 
     $scope.calculateTotal = function () {
+        var ritenuta , totBill,finalPrice;
         var tot = $scope.tasks.reduce(function (sum, task) {
             return sum + Number(task.quantity * task.cost);
         }, 0);
 
-        var ritenuta = tot * 0.2;
-        var totBill = tot - ritenuta;
-        var finalPrice = totBill + 1.81;
+        if ( $scope.bill.type === 'private'){
+            finalPrice = tot + 1.81;
+
+            return {
+                totBill: tot,
+                finalPrice: finalPrice,
+                ritenuta: 0
+            }
+
+        }
+
+        ritenuta = tot * 0.2;
+        totBill = tot - ritenuta;
+        finalPrice = totBill + 1.81;
         $scope.bill.tot = totBill;
         $scope.bill.finalPrice = finalPrice;
         $scope.bill.ritenuta = ritenuta;
