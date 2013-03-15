@@ -31,6 +31,10 @@ angular.module('publicApp',['ngResource'])
         templateUrl: 'views/customerDetail.html',
         controller: 'CustomerDetailCtrl'
       })
+      .when('/testDb', {
+        templateUrl: 'views/testDb.html',
+        controller: 'TestDbCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

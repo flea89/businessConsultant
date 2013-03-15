@@ -78,6 +78,7 @@ var create = function (JSONobj , func) {
 					func({result: 'emptyObj'});
 					return;
 				}
+				data.sync = new Date().getTime();
 				collection.insert(data, function(err,result){
 					 err === null ? func({result: 'ok'}) : func({result: 'no'});
 				});
@@ -129,6 +130,7 @@ var create = function (JSONobj , func) {
 					func({result: 'emptyObj'});
 					return;
 				}
+				data.sync = new Date().getTime();
 				collection.update({_id: oId}, {$set: data}, {safe:true}, function(err){
 					 err === null ? func({result: 'ok'}) : func({result: 'no'});
 					 if(err!==null){
@@ -139,6 +141,41 @@ var create = function (JSONobj , func) {
 		});
 	};
 
+	var getChanges = function (JSONobj,modifiedSince ,func) {
+		var data = '';
+		db.open(function(err, db){
+			db.collection(collection, function(err, collection) {
+				if(JSONobj){
+					data += JSONobj;
+					console.log(data);
+					try{
+						data = JSON.parse(data);
+					}
+					catch( e ) {
+						console.log(e);
+					}
+					console.log(data);
+				} else {
+					data = {};
+				}
+				console.log(data);
+				console.log (modifiedSince);
+				// var queryObj = JSON.parse(JSONobj);
+				collection.find(data).toArray(function(err, results) {
+					var results =results.filter(function(el){
+						return el.sync > modifiedSince;
+					});	
+
+					func(results);
+					db.close(true, function(){
+						console.log('closing');
+					});			
+				});
+			});
+		});
+
+	}
+
 	return {
 		connect: connect,
 		getItem: getItem,
@@ -146,7 +183,8 @@ var create = function (JSONobj , func) {
 		create: create,
 		removeItem: removeItem,
 		removeCollection: removeCollection,
-		updateItem: updateItem
+		updateItem: updateItem,
+		getChanges: getChanges
 	};
 
 

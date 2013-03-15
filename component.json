@@ -11,7 +11,9 @@
     "angular-cookies": "~1.0.5",
     "angular-sanitize": "~1.0.5",
     "bootstrap": "*",
-    "jspdf":"*"
+    "jspdf":"*",
+    "persist":"*",
+    "jaydata":"*"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.5",

@@ -24,12 +24,20 @@ var item = {
 };
 
 var collection = {
+
 	get : function(req,res){
 		users.connect();
-		console.log(req.query['user']);
-		users.getCollection(req.query['user'] ,function(result){
-			res.json(result);
-		});
+		console.log(req.query['modifiedSince']);
+		if(req.query['modifiedSince'] !== undefined){
+			users.getChanges(req.query['user'],req.query['modifiedSince'] ,function(result){
+				res.json(result);
+			});
+		}
+		else{
+			users.getCollection(req.query['user'] ,function(result){
+				res.json(result);
+			});
+		}
 	},
 	post : function(req,res){
 		users.connect();

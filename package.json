@@ -31,7 +31,7 @@
     "grunt-google-cdn": "~0.1.0",
     "grunt-ngmin": "~0.0.1",
     "grunt-express": "*",
-    "grunt-rerun" : "0.0.3"
+    "grunt-rerun" : "0.0.4"
   },
   "engines": {
     "node": ">=0.8.0"

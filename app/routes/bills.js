@@ -26,9 +26,17 @@ var item = {
 var collection = {
 	get : function(req,res){
 		bills.connect();
-		bills.getCollection(req.query['bill'] ,function(result){
-			res.json(result);
-		});
+		console.log(req.query['modifiedSince']);
+		if(req.query['modifiedSince'] !== undefined){
+			bills.getChanges(req.query['bill'],req.query['modifiedSince'] ,function(result){
+				res.json(result);
+			});
+		}
+		else{
+			bills.getCollection(req.query['bill'] ,function(result){
+				res.json(result);
+			});
+		}
 	},
 	post : function(req,res){
 		bills.connect();

@@ -6,6 +6,11 @@ factory('Customer', function ($resource) {
 		update:{
 			method: 'PUT',
 			params: {admin: '@admin'}
-		}
+		},
+        getChanges:{
+            method: 'GET',
+            params: { modifiedSince: '@modifiedSince'},
+            isArray: true
+        }
 	});
 });

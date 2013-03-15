@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('publicApp')
-    .controller('CustomerListCtrl', function ($scope, $location, Customer, $route) {
+    .controller('CustomerListCtrl', function ($scope, $location, Customer, $route,gStorage) {
     var allCustomers;
-    $scope.customers = Customer.query();
+    $scope.customers = gStorage.getCollection('customer');
+    // $scope.customers = Customer.query();
     $scope.query = {
         type: 'all'
     };

@@ -6,6 +6,11 @@ angular.module('publicApp')
     update:{
       method: 'PUT',
       params: {bill: '@bill'}
-    }
+    },
+    getChanges:{
+            method: 'GET',
+            params: { modifiedSince: '@modifiedSince'},
+            isArray: true
+        }
   });
 });
