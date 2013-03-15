@@ -9,12 +9,6 @@ angular.module('publicApp').factory('lStorage', function (jaydata) {
     }))
   };
 
-  // var getItem = function(resourceName,id){
-  //   var collectionArray = JSON.parse(store.get(resourceName));
-  //   return collectionArray.filter(function(e){
-  //     return e._id === id;
-  //   })
-  // };
   var getCollection = function (resourceName) {
       return jaydata.then(function (jaydataContext) {
         return jaydataContext[resourceName].filter(function () {
@@ -22,7 +16,6 @@ angular.module('publicApp').factory('lStorage', function (jaydata) {
         }).toArray();
       });
     };
-
 
   var getLastSync = function (resourceName) {
 
@@ -40,6 +33,7 @@ angular.module('publicApp').factory('lStorage', function (jaydata) {
   var addToCollection = function (resourceName, array) {
       var newArray = [];
       var idArray = [];
+
       array.forEach(function (e) {
         newArray.push(new $org.types[resourceName](e));
         idArray.push(new $org.types[resourceName]({
@@ -57,7 +51,6 @@ angular.module('publicApp').factory('lStorage', function (jaydata) {
       });
 
     };
-
 
   var emptyCollection = function (resourceName) {
       return jaydata.then(function (jaydataContext) {
@@ -78,16 +71,23 @@ angular.module('publicApp').factory('lStorage', function (jaydata) {
 
     };
 
+  var getItem = function(resourceName,myid){
+    return jaydata.then(function (jaydataContext) {
+        return jaydataContext[resourceName]
+          .filter(function (item) {
+            return item['_id'] === this.id;
+        }, { id: myid }).toArray();
+      });
+  };
+
 
   return {
     getLocalCollection: getCollection,
+    getLocalItem: getItem,
     getLastSync: getLastSync,
     addToCollection: addToCollection,
     emptyCollection: emptyCollection
   };
 
-  // var deleteItem = function(collection){
-  // };
-  // var modifyItem = function(collection){
-  // };
+
 });

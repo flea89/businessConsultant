@@ -14,7 +14,7 @@ angular.module('publicApp')
 
     $scope.remove = function(){
 
-        gStorage.deleteLocalStorage($scope.resource);
+        gStorage.syncObj.deleteLocalStorage($scope.resource);
     };
     
 

@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('publicApp')
-  .controller('ModifyCustomerCtrl', function ($scope,$routeParams,Customer) {
+  .controller('ModifyCustomerCtrl', function ($scope,$routeParams,Customer,gStorage) {
  //    $http.get('http://localhost:3000/users/' + $routeParams.id).success(function (data) {
 	// $scope.user = data;
 	// });+
-  $scope.user = Customer.get({id: $routeParams.id});
-
+  $scope.user = gStorage.getItem('customer',$routeParams.id);
+  setTimeout(function(){
+    console.log($scope.user);
+  },1000);
 
     $scope.modifyCustomer = function(){
         var JSONuser = JSON.stringify($scope.user);

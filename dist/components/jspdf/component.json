@@ -1,0 +1,9 @@
+{
+  "name": "jspdf",
+  "version": "0.0.0",
+  "commit": "1ebac5799de31623603692db0852ad47d1b1062f",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MrRio/jsPDF.git"
+  }
+}

@@ -3,11 +3,13 @@
 angular.module('publicApp')
     .controller('CustomerListCtrl', function ($scope, $location, Customer, $route,gStorage) {
     var allCustomers;
+    
     $scope.customers = gStorage.getCollection('customer');
-    // $scope.customers = Customer.query();
+
     $scope.query = {
         type: 'all'
     };
+    
     $scope.getCustomers = function () {
     	var customersType = $scope.query.type;
 
