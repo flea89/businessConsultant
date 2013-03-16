@@ -92,7 +92,8 @@ var create = function (JSONobj , func) {
 			db.collection(collection, function(err,collection){
 				console.log(id);
 				var oId = new BSON.ObjectID(id);
-				collection.remove({_id: oId}, {w:1}, function(err,result){
+				var timestamp = new Date().getTime();
+				collection.update({_id: oId},{$set: {deleted: true, sync: timestamp }}, {safe:true}, function(err,result){
 					 err === null ? func({result: 'ok'}) : func({result: 'no'});
 				});
 
@@ -162,11 +163,24 @@ var create = function (JSONobj , func) {
 				console.log (modifiedSince);
 				// var queryObj = JSON.parse(JSONobj);
 				collection.find(data).toArray(function(err, results) {
-					var results =results.filter(function(el){
-						return el.sync > modifiedSince;
-					});	
+					var deleted = [] , res = [];
+					res =results.filter(function(el){
+						return el.sync > modifiedSince && (el.deleted === undefined || el.deleted === false);
+					});
 
-					func(results);
+					deleted = results.filter(function(el){
+						return el.sync > modifiedSince && el.deleted == true;
+					})
+					.map(function(e){
+						return e._id;
+					});
+
+					var elements = {
+						results: res,
+						deleted: deleted
+					};
+					console.log(elements);
+					func(elements);
 					db.close(true, function(){
 						console.log('closing');
 					});			

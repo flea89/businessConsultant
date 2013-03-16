@@ -10,7 +10,7 @@ factory('Customer', function ($resource) {
         getChanges:{
             method: 'GET',
             params: { modifiedSince: '@modifiedSince'},
-            isArray: true
+            isArray: false
         }
 	});
 });
