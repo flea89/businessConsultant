@@ -5,7 +5,9 @@
     "express": "3.0.5",
     "jade": "*",
     "mongodb" : "*",
-    "express-routes-map": "0.0.0"
+    "express-routes-map": "0.0.1",
+    "passport": "*",
+    "passport-local": "*"
 
     },
   "devDependencies": {

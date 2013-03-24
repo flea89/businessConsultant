@@ -1,61 +1,76 @@
-<span class="span4">
-	<h2>Clienti</h2>
-</span>
-<span class="span4">
-	<div>
-		<span class="span2">Tipo cliente:</span>
-		<span class="span2">
-			<select ng-model="query.type" class="ng-pristine ng-valid" >
-				<option value="private" selected>Private</option>
-				<option value="professional">Professional</option>
-				<option value="all" selected>All</option>
-			</select>
-		</span>
-	</div>
-	<div>
-		<span class="span2">Search:</span>
-		<span class="span2">
-			<input ng-model="search.$"></span>
-	</div>
-</span>
-<div class="span8">
+<h2>Clienti</h2><br>
 
-	<table class="table customerTable">
-		<thead>
-			<th>#</th>
-			<th>Credential</th>
-			<th>Address</th>
-		</thead>
-
-		<tbody>
-			<tr ng-repeat="customer in getCustomers() | orderBy: ['surname','name'] |filter:search ">
-				<td width="10%" >{{$index}}</td>
-				<td width="40%"> <strong><a href="#/customerDetail/{{customer._id}}">{{customer.surname}} {{customer.name}} {{customer.societa}}</a></strong> 
-					<p ng-show="customer.cf">
-						<span customer.cf>CodFiscale:</span>
-						{{customer.cf}}
-						<br>
-					</p>
-					<p ng-show="customer.pi">PartitaIva:
-					{{customer.pi}}</p>
-				</td>
-				<td width="40%">
-					<address>
-						Via {{customer.address.street}}, {{customer.address.streetnumber}}
-						<br>
-						{{customer.address.city}} {{customer.address.cap}} {{customer.address.provincia}}
-						<br>
-						<span ng-show="customer.address">Italy</span>
-					</address>
-				</td>
-				<td>
-					<button class="btn btn-primary" ng-click="linkModify(customer._id)">Modify</button>
-					<button  class=" btn btn-danger" ng-click="deleteCustomer(customer._id)">Delete</button>
-				</td>
-			</tr>
-
-		</tbody>
-	</table>
+<div class="row">
+	<div class="span2">Tipo cliente:</div>
+	<select ng-model="query.type" class="ng-pristine ng-valid offset1" >
+		<option value="private" selected>Private</option>
+		<option value="professional">Professional</option>
+		<option value="all" selected>All</option>
+	</select>
 </div>
-<p>
-	{{success}}
+<div class="row">
+
+	<div class="span2">Search:</div>
+	<input type="text" ng-model="search.$" class="offset1">
+</div>
+	<div class="span8">
+		<table class="table customerTable">
+			<thead>
+				<th>#</th>
+				<th>Credential</th>
+				<th>Address</th>
+			</thead>
+
+			<tbody>
+				<tr ng-repeat="customer in getCustomers() | orderBy: ['surname','name'] |filter:search ">
+					<td width="10%" >{{$index}}</td>
+					<td width="40%"> <strong><a href="#/customerDetail/{{customer._id}}">{{customer.surname}} {{customer.name}} {{customer.societa}}</a></strong> 
+						<p ng-show="customer.cf">
+							<span customer.cf>CodFiscale:</span>
+							{{customer.cf}}
+							<br></p>
+						<p ng-show="customer.pi">
+							PartitaIva:
+					{{customer.pi}}
+						</p>
+					</td>
+					<td width="40%">
+						<address>
+							Via {{customer.address.street}}, {{customer.address.streetnumber}}
+							<br>
+							{{customer.address.city}} {{customer.address.cap}} {{customer.address.provincia}}
+							<br>
+							<span ng-show="customer.address">Italy</span>
+						</address>
+					</td>
+					<td>
+						<div class="btn-group">
+							<a class="btn btn-primary" ng-class="" href="" ng-click="createBill(customer._id)"> <i class="icon-ok icon-white"></i>
+								CreateBill
+							</a>
+							<a class="btn btn-primary dropdown-toggle" ng-class="" data-toggle="dropdown" href="#">
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="" ng-click="linkModify(customer._id)"> <i class="icon-edit" ></i>
+										Modifica cliente
+									</a>
+								</li>
+								<li>
+									<a href="" ng-click="deleteCustomer(customer._id)">
+										<i class="icon-trash"></i>
+										Elimina cliente
+									</a>
+								</li>
+							</ul>
+						</div>
+
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+	<p>
+		{{success}}

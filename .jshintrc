@@ -20,6 +20,8 @@
   "trailing": true,
   "smarttabs": true,
   "globals": {
+    "$":false,
+    "alert": false,
     "angular": false,
     "describe":false,
     "it":false,

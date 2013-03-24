@@ -8,7 +8,7 @@ angular.module('publicApp')
         template: '<button style="float: left" class="btn btn-{{onlineclass}} online" >{{onlineText}}</button>',
         // template: '<div class="circle" style="color:{{online}}"></div>',
         link: function (scope, element, attrs) {
-            var onlineText = 'online', offlineText = 'offline'
+            var onlineText = 'on', offlineText = 'off'
 
             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
                 onlineText = 'on';

@@ -1,0 +1,159 @@
+<div class="row createBillContainer">
+
+    <div class="span9 box">
+        <div class="row">
+            <div class="span2 offset7 bollo hidden-phone" style="width: 100px">
+                carta da bollo da euro 1.81
+                <br>
+                apposta sull'originale
+                <br>
+                <br></div>
+            <!-- intestazioni -->
+            <div class="row">
+                <div class="span4 offset1">
+                    <address>
+                        <div>
+                            <span contenteditable="">Dr</span>
+                            <span contenteditable="" ng-model="bill.admin.surname"></span>
+                            <span contenteditable="" ng-model="bill.admin.name"></span>
+                        </div>
+
+                        <div>
+                            <span contenteditable="">ODONTOIATRIA</span>
+                        </div>
+                        <div>
+                            <span contenteditable="">Via</span>
+                            <span contenteditable="" ng-model="bill.admin.address.street"></span>
+                            <span contenteditable="" ng-model="bill.admin.address.streetNumber"></span>
+                            <span contenteditable="" ng-model="bill.admin.address.cap"></span>
+                            <span contenteditable="" ng-model="bill.admin.address.city"></span>
+                            (
+                            <span contenteditable="" ng-model="bill.admin.address.provincia"></span>
+                            )
+                        </div>
+                        <div>
+                            P.iva:
+                            <span contenteditable="" ng-model="bill.admin.pi"></span>
+                        </div>
+                        <div>
+                            C.F.:
+                            <span contenteditable="" ng-model="bill.admin.cf"></span>
+                        </div>
+                    </address>
+                </div>
+                <div class="span3 offset1 customerCredential">
+                    <address>
+                        <div>
+                            <span contenteditable="" ng-model="bill.customer.title">Dr</span>
+                            <span contenteditable="" ng-model="bill.customer.surname">cognome</span>
+                            <span contenteditable="" ng-model="bill.customer.name">nome</span>
+                            <span contenteditable="" ng-model="bill.customer.societa"></span>
+                        </div>
+
+                        <div>
+                            <span contenteditable="" ng-model="bill.customer.address.streetType">Via</span>
+                            <span contenteditable="" ng-model="bill.customer.address.street"></span>
+                            <span contenteditable="" ng-model="bill.customer.address.streetNumber"></span>
+                            <span contenteditable="" ng-model="bill.customer.address.cap"></span>
+                            <span contenteditable="" ng-model="bill.customer.address.city"></span>
+                            (
+                            <span contenteditable="" ng-model="bill.customer.address.provincia"></span>
+                            )
+                        </div>
+                        <div ng-show="bill.customer.pi">
+                            P.iva:
+                            <span contenteditable="" ng-model="bill.customer.pi"></span>
+                        </div>
+                        <div ng-show="bill.customer.cf">
+                            C.F.:
+                            <span contenteditable="" ng-model="bill.customer.cf"></span>
+                        </div>
+                    </address>
+                </div>
+            </div>
+
+            <!-- n fattura / data -->
+            <div class="row">
+                <div class="span3 offset1">
+                    <table class="table table-bordered" width="1000px">
+                        <thead>
+                            <th>Nr Fattura</th>
+                            <th>Data</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td contenteditable="" ng-model="bill.number">56</td>
+                                <td><input ng-model="bill.date" type="date" value="{{bill.date | date:'yyyy-MM-dd'}}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- tabellona -->
+            <div class="row">
+                <div class="span7 offset1">
+                    <table class="table table-bordered billTable" width="1000px">
+                        <thead>
+                            <th>Quantita'</th>
+                            <th>Oggetto</th>
+                            <th></th>
+                            <th></th>
+                            <th>Totale</th>
+                        </thead>
+                        <tbody>
+                            <tr class="rowT" ng-repeat="task in tasks">
+                                <td contenteditable="" ng-model="task.quantity"></td>
+                                <td contenteditable="" ng-model="task.taskName"></td>
+                                <td class=""></td>
+                                <td class=""></td>
+                                <td contenteditable="" ng-model="task.cost"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span3 offset1">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>Ritenuta d'acconto</td>
+                                <td>{{calculateTotal().ritenuta | currency:"€ " }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="span4">
+                    <table class="table table-bordered totale">
+                        <tr>
+                            <td>Totale Fattura</td>
+                            <td>{{calculateTotal().totBill | currency:"€ "}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Bollo</td>
+                            <td>1,81</td>
+                        </tr>
+                        <tr>
+                            <td>Totale da corrispondere</td>
+                            <td>{{calculateTotal().finalPrice | currency:"€ "}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="span3 offset9 billSaveControls">
+            <button class="btn btn-success span" ng-click="modify()">Save</button>
+<!--             <button class="btn btn-success">Save&Print</button>
+ -->        </div>
+    </div>
+</div>
+{{bill}}

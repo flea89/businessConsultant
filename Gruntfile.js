@@ -148,10 +148,14 @@ module.exports = function (grunt) {
         sassDir: '<%= yeoman.app %>/styles',
         cssDir: '<%= yeoman.server %>/.public/styles',
         imagesDir: '<%= yeoman.app %>/images',
+        raw: 'http_images_path = "/images"\n',
         javascriptsDir: '<%= yeoman.app %>/scripts',
         fontsDir: '<%= yeoman.app %>/styles/fonts',
         importPath: '<%= yeoman.app %>/components',
-        relativeAssets: true
+        relativeAssets: false
+
+
+
       },
       dist: {},
       server: {
@@ -292,8 +296,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'jshint',
-    'test',
+    // 'jshint',
+    // 'test',
     'coffee',
     'compass:dist',
     'useminPrepare',

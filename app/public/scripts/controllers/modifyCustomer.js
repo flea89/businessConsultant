@@ -6,9 +6,11 @@ angular.module('publicApp')
 	// $scope.user = data;
 	// });+
   $scope.user = Customer.get({id: $routeParams.id});
+    $scope.isNotSociety = function(){
+    return $scope.user.title !== 'Societa';
+  };
 
-
-    $scope.modifyCustomer = function(){
+    $scope.submit = function(){
         var JSONuser = JSON.stringify($scope.user);
         $('.progress').removeClass('hidden');
         Customer.update ({

@@ -1,36 +1,58 @@
-<div class="span3">
-<h2>{{customer.surname}} {{customer.name}}</h2>
-<b>Tipo di cliente:</b> {{customer.type}}
-<h3>Indirizzo</h3>
-<p>
-<address>
-    <div>
-        <span contenteditable>Via</span>
-        <span contenteditable ng-model="customer.address.street"></span>
-        <span contenteditable ng-model="customer.address.streetNumber"></span><br>
-        <span contenteditable ng-model="customer.address.cap"></span>
-        <span contenteditable ng-model="customer.address.city"></span>
-        (
-        <span contenteditable ng-model="customer.address.provincia"></span>
-        )
-    </div>
-    <div>
-        P.iva:
-        <span contenteditable ng-model="customer.pi"></span>
-    </div>
-    <div>
-        C.F.:
-        <span contenteditable ng-model="customer.cf"></span>
-    </div>
-</address>
-</p>
+<div class="row">
+    <div class="span3">
+        <h2>{{customer.surname}} {{customer.name}}</h2> <b>Tipo di cliente:</b>
+        {{customer.type}}
+        <h3>Indirizzo</h3>
+        <p>
+            <address>
+                <div>
+                    <span contenteditable>Via</span>
+                    <span contenteditable ng-model="customer.address.street"></span>
+                    <span contenteditable ng-model="customer.address.streetNumber"></span>
+                    <br>
+                    <span contenteditable ng-model="customer.address.cap"></span>
+                    <span contenteditable ng-model="customer.address.city"></span>
+                    (
+                    <span contenteditable ng-model="customer.address.provincia"></span>
+                    )
+                </div>
+                <div>
+                    P.iva:
+                    <span contenteditable ng-model="customer.pi"></span>
+                </div>
+                <div>
+                    C.F.:
+                    <span contenteditable ng-model="customer.cf"></span>
+                </div>
+            </address>
+        </p>
 
-<h3>Contatti</h3>
-<p>
-    <b>Mail:</b> {{customer.mail}}
-</p>
-<p>
-    <b>Phone:</b> {{customer.telephone}}
-</p>
-<button class="btn btn-primary" ng-click="linkModify()">Modify</button>
+        <h3>Contatti</h3>
+        <p> <b>Mail:</b>
+            {{customer.mail}}
+        </p>
+        <p>
+            <b>Phone:</b>
+            {{customer.telephone}}
+        </p>
+        <button class="btn btn-primary" ng-click="linkModify()">Modify</button>
+    </div>
+    <div class="span3 offset3">
+        <h2>Bills:</h2><br>
+        <table class="table table-striped table-hover">
+            <thead>
+                <th>#</th>
+                <th>Date</th>
+                <th>Total:</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="bill in customer.bills | orderBy : ['date']" ng-click="detail(bill._id)">
+                    <td>{{bill.number}}</td>
+                    <td>{{bill.date}}</td>
+                    <td>{{bill.finalPrice | currency:"€ "}} </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
 </div>

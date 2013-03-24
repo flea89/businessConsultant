@@ -34,6 +34,9 @@ angular.module('publicApp')
     $scope.linkModify = function (id) {
         $location.path('modifyCustomer/' + id);
     };
+    $scope.createBill = function (id) {
+        $location.path('createBill/' + id);
+    };
 
     $scope.deleteCustomer = function (id) {
         var progressBar = $('.progress');

@@ -1,10 +1,6 @@
 'use strict';
 
 angular.module('publicApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Testacular'
-    ];
-  });
+    .controller('Main', function($scope, $http) {
+
+});

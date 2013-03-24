@@ -10,7 +10,7 @@
       <![endif]-->
       <!--[if gt IE 8]>
       <!-->
-      <html class="no-js">
+      <html class="no-js" >
         <!--<![endif]-->
 <head>
         <meta charset="utf-8"/>
@@ -37,84 +37,125 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="container">
-              <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </a>
-              <online></online>
+        <div>
+
+          <div class="navbar navbar-fixed-top" bs-navbar>
+            <div class="navbar-inner">
+              <div class="container">
+                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </a>
+                <!-- <online></online>
+              -->
               <!-- Be sure to leave the brand out there if you want it shown -->
-              <a class="brand" href="#">B<span class="hidden-phone">usiness</span>Consultant</a>
+              <a class="brand" href="#">
+                Business
+                <br>Consultant</a>
               <!-- Everything you want hidden at 940px or less, place within here -->
               <div class="nav-collapse collapse">
 
                 <!-- .nav, .navbar-search, .navbar-form, etc -->
                 <ul class="nav">
-                  <li class="active">
-                    <a href="#">Home</a>
+                  <li data-match-route="/" >
+                    <a href="#"> <i class="icon-home visible-phone"></i>
+                      Home
+                    </a>
                   </li>
-                  <li>
-                    <a href="#/createBill">Crea Fattura</a>
+                  <li data-match-route="/login">
+                    <a href="#/login" class="visible-phone"> <i class="icon-user  visible-phone"></i>
+                      Login
+                    </a>
                   </li>
-                  <li>
-                    <a href="#/addCustomer">Aggiungi cliente</a>
+                  <li data-match-route="/createBill">
+                    <a href="#/createBill">
+                      <i class="icon-pencil visible-phone "></i>
+                      Crea Fattura
+                    </a>
                   </li>
-                  <li>
-                    <a href="#/customerList">Lista Clienti</a>
+                  <li data-match-route="/addCustomer">
+                    <a href="#/addCustomer">
+                      <i class="icon-file visible-phone"></i>
+                      Aggiungi cliente
+                    </a>
+                  </li>
+                  <li data-match-route="/customerList">
+                    <a href="#/customerList">
+                      <i class="icon-list visible-phone"></i>
+                      Lista Clienti
+                    </a>
+                  </li>
+                  <li data-match-route="/billList">
+                    <a href="#/billList">
+                      <i class="icon-book visible-phone"></i>
+                      Lista Fatture
+                    </a>
+
+                  </li>
+                  <li class="divider-vertical"></li>
+                  <li class="hidden-phone" login>
+                     
                   </li>
                 </ul>
-                <img src="images/evolution.png" class="evolution">
-              </div>
-
+                <!--                 <img src="images/evolution.png" class="evolution"></div>
+              -->
             </div>
           </div>
         </div>
-        <progressbar show="pBarVisibility" status="pBarStatus" active="pBarActive"></progressbar>
-        <div class="container" ng-view></div>
-        <script src="components/jquery/jquery.min.js"></script>
-        <script src="components/angular/angular.js"></script>
-        <script src="components/angular-resource/angular-resource.js"></script>
-        <script src="components/angular-cookies/angular-cookies.js"></script>
-        <script src="components/angular-sanitize/angular-sanitize.js"></script>
-        <script src="components/angular-sanitize/angular-sanitize.js"></script>
-        <script src="components/bootstrap/js/bootstrap-collapse.js"></script>
-        <script type="text/javascript" src="components/jspdf/jspdf.js"></script>
-        <script type="text/javascript" src="components/jspdf/jspdf.plugin.standard_fonts_metrics.js"></script>
+      </div>
+      <progressbar show="pBarVisibility" status="pBarStatus" active="pBarActive"></progressbar>
+      <div class="container" ng-view></div>
+    </div>
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/angular/angular.js"></script>
+    <script src="components/angular-resource/angular-resource.js"></script>
+    <script src="components/angular-cookies/angular-cookies.js"></script>
+    <script src="components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="components/bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="components/bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="components/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="components/bootstrap/js/bootstrap-popover.js"></script>
 
-        <script type="text/javascript" src="components/jspdf/jspdf.plugin.from_html.js"></script>
+    <!-- build:js scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/customer.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/filters/upperCase.js"></script>
+    <script src="scripts/controllers/addCustomer.js"></script>
+    <script src="scripts/directives/navBar.js"></script>
+    <script src="scripts/controllers/customerList.js"></script>
+    <script src="scripts/controllers/modifyCustomer.js"></script>
 
-        <!-- build:js scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/services/customer.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/filters/upperCase.js"></script>
-        <script src="scripts/controllers/addCustomer.js"></script>
-        <script src="scripts/directives/navBar.js"></script>
-        <script src="scripts/controllers/customerList.js"></script>
-        <script src="scripts/controllers/modifyCustomer.js"></script>
- 
-        <script src="scripts/services/barbero.js"></script>
-        <script src="scripts/directives/progressBar.js"></script>
-        <script src="scripts/controllers/createBill.js"></script>
-        <script src="scripts/directives/ngEditable.js"></script>
-        <script src="scripts/directives/ngEditableRepeat.js"></script>
-        <script src="scripts/services/billHandler.js"></script>
-        <script src="scripts/services/admin.js"></script>
-        <script src="scripts/controllers/administrator.js"></script>
-        <script src="scripts/controllers/customerDetail.js"></script>
-        <script src="scripts/directives/online.js"></script>
-        <!-- endbuild -->
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
+    <script src="scripts/services/barbero.js"></script>
+    <script src="scripts/directives/progressBar.js"></script>
+    <script src="scripts/controllers/createBill.js"></script>
+    <script src="scripts/directives/ngEditable.js"></script>
+    <script src="scripts/directives/ngEditableRepeat.js"></script>
+    <script src="scripts/services/billHandler.js"></script>
+    <script src="scripts/services/admin.js"></script>
+    <script src="scripts/controllers/administrator.js"></script>
+    <script src="scripts/controllers/customerDetail.js"></script>
+    <script src="scripts/directives/online.js"></script>
+    <script src="scripts/controllers/billDetails.js"></script>
+    <script src="scripts/controllers/billList.js"></script>
+    <script src="scripts/directives/Login.js"></script>
+    <script src="scripts/directives/navbarselection.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <!-- endbuild -->
+<SCRIPT TYPE="text/javascript">
+      $('.nav-collapse').click('li', function() {
+      $('.nav-collapse').collapse('hide');
+      });
+        </SCRIPT>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
       var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
 </body>
-      </html>
+  </html>
