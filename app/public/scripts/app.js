@@ -59,6 +59,23 @@ angular.module('publicApp', ['ngResource', 'ngCookies'])
         });
     };
 
+    Array.prototype.modifyElementById = function(obj){
+        var that = this;
+        this.map(function(el,index){
+            if ( el._id === obj._id){
+                that[index] = obj;
+            }
+        });
+    };
+
+
+    Array.prototype.max = function(propertyName) {
+        if (this.length === 0) return 0;
+        return Math.max.apply(Math, this.map(function(o) {
+            return o[propertyName];
+        }));
+    };
+
     $http({
         method: 'GET',
         url: '/user',

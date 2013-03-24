@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('publicApp')
-    .controller('BillDetailsCtrl', function($scope, Bill, $routeParams) {
+    .controller('BillDetailsCtrl', function($scope, Bill, $routeParams,$location) {
 
     $scope.tasks = [{}, {}, {}, {}, {}, {}, {}, {}, {}];
 
@@ -54,11 +54,8 @@ angular.module('publicApp')
             return false;
         });
         var JSONObj = angular.toJson($scope.bill);
-        Bill.resource.update({
-            id: $scope.bill._id,
-            bill: JSONObj
-        }, function() {
-
+        Bill.updateBill($scope.bill, function() {
+            $location.path('/billList');
         }, function() {
 
         });

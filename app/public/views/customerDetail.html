@@ -6,21 +6,21 @@
         <p>
             <address>
                 <div>
-                    <span contenteditable>Via</span>
+                    <span contenteditable ng-model="customer.address.streetType"></span>
                     <span contenteditable ng-model="customer.address.street"></span>
                     <span contenteditable ng-model="customer.address.streetNumber"></span>
                     <br>
                     <span contenteditable ng-model="customer.address.cap"></span>
                     <span contenteditable ng-model="customer.address.city"></span>
-                    (
+                    <span ng-show ="customer.address.provincia">(
                     <span contenteditable ng-model="customer.address.provincia"></span>
-                    )
+                    )</span>
                 </div>
-                <div>
+                <div ng-show="customer.pi">
                     P.iva:
                     <span contenteditable ng-model="customer.pi"></span>
                 </div>
-                <div>
+                <div ng-show="customer.cf">
                     C.F.:
                     <span contenteditable ng-model="customer.cf"></span>
                 </div>
@@ -28,18 +28,19 @@
         </p>
 
         <h3>Contatti</h3>
-        <p> <b>Mail:</b>
+        <p ng-show="customer.mail"> 
+            <b>Mail:</b>
             {{customer.mail}}
         </p>
-        <p>
+        <p ng-show="customer.telephone">
             <b>Phone:</b>
             {{customer.telephone}}
         </p>
         <button class="btn btn-primary" ng-click="linkModify()">Modify</button>
     </div>
-    <div class="span3 offset3">
+    <div class="span6 offset1">
         <h2>Bills:</h2><br>
-        <table class="table table-striped table-hover">
+        <table ng-show="customer.bills.length" class="table table-striped table-hover">
             <thead>
                 <th>#</th>
                 <th>Date</th>
@@ -47,12 +48,12 @@
             </thead>
             <tbody>
                 <tr ng-repeat="bill in customer.bills | orderBy : ['date']" ng-click="detail(bill._id)">
-                    <td>{{bill.number}}</td>
-                    <td>{{bill.date}}</td>
-                    <td>{{bill.finalPrice | currency:"€ "}} </td>
+                    <td class="span1">{{bill.number}}</td>
+                    <td class="span2">{{bill.date | date}}</td>
+                    <td class="span2">{{bill.finalPrice | currency:"€ "}} </td>
                 </tr>
             </tbody>
-
         </table>
+        <strong ng-show="!customer.bills.length"> No bills</strong>
     </div>
 </div>

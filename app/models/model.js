@@ -186,7 +186,7 @@ module.exports = function(collection) {
 				}, {
 					safe: true
 				}, function(err, result) {
-					err === null ? func(result[0]) : func({
+					err === null ? func({result: 'ok'}) : func({
 						result: 'no'
 					});
 					if (err !== null) {

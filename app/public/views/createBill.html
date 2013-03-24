@@ -18,7 +18,7 @@
     </div>
 
     <div class="span9 box">
-        <div class="row"> 
+        <div class="row">
             <div class="span2 offset7 bollo hidden-phone" style="width: 100px">
                 carta da bollo da euro 1.81
                 <br>
@@ -73,9 +73,12 @@
                             <span contenteditable ng-model="bill.customer.address.streetNumber"></span>
                             <span contenteditable ng-model="bill.customer.address.cap"></span>
                             <span contenteditable ng-model="bill.customer.address.city"></span>
-                            (
-                            <span contenteditable ng-model="bill.customer.address.provincia"></span>
-                            )
+
+                            <span ng-show ="bill.customer.address.provincia">
+                                (
+                                <span contenteditable ng-model="bill.customer.address.provincia"></span>
+                                )
+                            </span>
                         </div>
                         <div ng-show="bill.customer.pi">
                             P.iva:
@@ -100,7 +103,8 @@
                         <tbody>
                             <tr>
                                 <td contenteditable ng-model="bill.number"></td>
-                                <td><input ng-model="bill.date" type="date" value ="{{date | date:'yyyy-MM-dd'}}"></td>
+                                <td>
+                                    <input ng-model="bill.date" type="date" value ="{{date | date:'yyyy-MM-dd'}}"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -169,8 +173,8 @@
     <div class="row">
         <div class="span2 offset10 billSaveControls">
             <button class="btn btn-success span" ng-click="save()">Save</button>
-<!--             <button class="btn btn-success">Save&Print</button>
- -->        </div>
+            <!--             <button class="btn btn-success">Save&Print</button>
+        -->
     </div>
 </div>
-{{bill}}
+</div>

@@ -1,6 +1,6 @@
     <div class="span7">
         <h2>Bills:</h2><br>
-        <table class="table table-striped  table-hover">
+        <table ng-show="bills.length" class="table table-striped  table-hover">
             <thead>
                 <th>#</th>
                 <th>Date</th>
@@ -34,4 +34,5 @@
             </tbody>
 
         </table>
+        <strong class="text-error" ng-show="!bills.length">No Bills avaiable</strong>
     </div>

@@ -10,12 +10,7 @@ angular.module('publicApp')
         }
     });
 
-    Array.prototype.max = function(propertyName) {
-        if (this.length === 0) return 0;
-        return Math.max.apply(Math, this.map(function(o) {
-            return o[propertyName];
-        }));
-    };
+
 
     var bills = [];
 
@@ -57,29 +52,51 @@ angular.module('publicApp')
                     bill.number = bills.max('number') + 1;
                 }
             }, function(res) {
-                alart ('error')
+                alart('error')
             });
         } else {
             bill.number = bills.max('number') + 1;
         }
     };
 
-    var deleteBill = function (id, succ, error){
+    var deleteBill = function(id, succ, error) {
         var index;
         bill.delete({
             id: id
-        },function(data){
+        }, function(data) {
             console.log(bills);
             bills.remove(id);
             succ(data)
         },
-        function(){
+
+        function() {
             error(data);
         });
     };
 
 
+    var updateBill = function(obj, succ, err) {
+        var JSONbill = angular.toJson(obj);
+        bill.update({
+            id: obj._id,
+            bill: JSONbill
+        }, function(data) {
+            if (data.result === 'no'){
+                alert ('error');
+            }
+            else {
+                bills.modifyElementById(obj);
+                succ(data);
+            }
+
+        }, function(data) {
+            err(data);
+        });
+    };
+
+
     return {
+        updateBill: updateBill,
         resource: bill,
         deleteBill: deleteBill,
         queryAll: queryAll,
