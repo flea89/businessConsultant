@@ -74,7 +74,7 @@ input[type="text"],input[type="email"],input[type="telephone"] textarea {
 .fixedprogress{
 	position: fixed;
 	width: 100%;
-	top:42px;
+	top:88px;
 	height: 8px;
 }
 .hidden{
@@ -221,7 +221,7 @@ address{
             margin-left: 10px;
             float: left;
             font-weight: bold;
-            background-color: rgb(45, 69, 116);
+            background-color: #15304d;
             color: #fff;
             text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
             box-shadow: inset -7 -2px -6 rgba(0, 0, 0, 0.2), 0 3px 21px rgba(0, 0, 0, 0.1);
@@ -269,7 +269,7 @@ padding: 8px 16px 4px;
 
 .navbar-inner .nav >li.selected{
   border-bottom: solid 8px;
-  border-bottom-color: #711D12;
+  border-bottom-color: #B13532;
 }
 
 .evolution{

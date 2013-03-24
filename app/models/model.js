@@ -1,5 +1,8 @@
 'use strict';
 
+function validate_id(id, func) {
+	return !(id !== null && (id.length != 12 && id.length != 24));
+}
 
 module.exports = function(collection) {
 	var Db, Server, db;
@@ -20,7 +23,14 @@ module.exports = function(collection) {
 	var getItem = function(id, func) {
 		db.open(function(err, db) {
 			db.collection(collection, function(err, collection) {
-				var oId = new BSON.ObjectID(id);
+				if (validate_id(id)) {
+					var oId = new BSON.ObjectID(id);
+				} else {
+					func({
+						result: 'Id malformed'
+					});
+					return;
+				}
 				console.log(id);
 				var cursor = collection.find({
 					'_id': oId
@@ -47,6 +57,9 @@ module.exports = function(collection) {
 						data = JSON.parse(data);
 					} catch (e) {
 						console.log(e);
+						func({
+							result: 'malformedJSON'
+						});
 					}
 					console.log(data);
 				} else {
@@ -75,10 +88,11 @@ module.exports = function(collection) {
 					try {
 						data = JSON.parse(data)
 					} catch (e) {
+						console.log(e);
 						func({
 							result: 'malformedJSON'
 						});
-						console.log(e);
+
 						return;
 					}
 				} else {
@@ -101,13 +115,22 @@ module.exports = function(collection) {
 		db.open(function(err, db) {
 			db.collection(collection, function(err, collection) {
 				console.log(id);
-				var oId = new BSON.ObjectID(id);
+				if (validate_id(id)) {
+					var oId = new BSON.ObjectID(id);
+				} else {
+					func({
+						result: 'Id malformed'
+					});
+					return;
+				}
 				collection.remove({
 					_id: oId
 				}, {
 					w: 1
 				}, function(err, result) {
-					err === null ? func(result[0]) : func({
+					err === null ? func({
+						result: 'ok'
+					}) : func({
 						result: 'no'
 					});
 				});
@@ -146,6 +169,9 @@ module.exports = function(collection) {
 						delete data._id;
 					} catch (e) {
 						console.log(e);
+						func({
+							result: 'malformedJSON'
+						});
 					}
 				} else {
 					func({
@@ -159,7 +185,7 @@ module.exports = function(collection) {
 					$set: data
 				}, {
 					safe: true
-				}, function(err,result) {
+				}, function(err, result) {
 					err === null ? func(result[0]) : func({
 						result: 'no'
 					});

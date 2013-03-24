@@ -50,6 +50,15 @@ angular.module('publicApp', ['ngResource', 'ngCookies'])
     });
 }).run(function($rootScope, $cookies, $http) {
 
+    Array.prototype.remove = function(objId){
+        var that = this;
+        this.map(function(el,index){
+            if (el._id === objId){
+                that.splice(index);
+            }
+        });
+    };
+
     $http({
         method: 'GET',
         url: '/user',

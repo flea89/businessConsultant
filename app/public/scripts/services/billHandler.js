@@ -52,21 +52,36 @@ angular.module('publicApp')
         if (bills.length === 0) {
             queryAll(function(res) {
                 if (res.length === 0) {
-                    alert('error retreiving bill number');
+                    bill.number = 1;
                 } else {
                     bill.number = bills.max('number') + 1;
                 }
             }, function(res) {
-
+                alart ('error')
             });
         } else {
             bill.number = bills.max('number') + 1;
         }
     };
 
+    var deleteBill = function (id, succ, error){
+        var index;
+        bill.delete({
+            id: id
+        },function(data){
+            console.log(bills);
+            bills.remove(id);
+            succ(data)
+        },
+        function(){
+            error(data);
+        });
+    };
+
 
     return {
         resource: bill,
+        deleteBill: deleteBill,
         queryAll: queryAll,
         setCurrentBillNumber: setCurrentBillNumber,
         addBill: addBill

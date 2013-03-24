@@ -6,6 +6,13 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     app = express(),
+    fs = require('fs'),
+    stream = fs.createWriteStream('log.txt', {
+        flags: 'w'
+    }),
+    error = fs.createWriteStream('error.txt', {
+        flags: 'w'
+    }),
     expressmap = require('express-routes-map'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
@@ -19,12 +26,19 @@ var express = require('express'),
         username: 'joe',
         password: 'birthday',
         email: 'joe@example.com'
-    },{
-        id:3,
+    }, {
+        id: 3,
         username: 'demo',
         password: 'demo',
         email: 'demo@demo.foo'
     }];
+
+
+process.on('uncaughtException', function(err) {
+    console.log('err');
+    error.write(err.toString());
+});
+
 
 function findById(id, fn) {
     var idx = id - 1;
@@ -109,25 +123,32 @@ app.configure(function() {
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(app.router);
+    app.use(express.logger({
+        stream: stream
+    }));
 
 });
 
-app.configure('development', function() {
-    app.use(express.errorHandler());
-});
+// app.configure('development', function() {
+//     app.use(express.errorHandler());
+// });
+
+
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.send(JSON.stringify({access: 'denied'}));
+    res.send(JSON.stringify({
+        access: 'denied'
+    }));
 }
 
 app.get("/culo", ensureAuthenticated, function(req, res, next) {
     res.send("culo");
 });
 
-app.get('/user', ensureAuthenticated,function(req,res){
+app.get('/user', ensureAuthenticated, function(req, res) {
     res.send(JSON.stringify(req.user));
 });
 
